@@ -137,8 +137,23 @@ import {data} from './donut.js'
     }
 
 	//Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
+    function calculateSumOfAllSaturatedFats(){
+        let saturatedFatsCount = 0.0;
+        for (let i = 0; i < donuts.length; i++) {
+            const donut = donuts[i];
+            const donutSaturatedFat = donut.nutrition_facts.nutrition.fat.fat_type.saturated;
+            saturatedFatsCount += parseFloat(donutSaturatedFat.substring(donutSaturatedFat.length - 1, 0));
+        }
+        return saturatedFatsCount;
+    }
 
 	//Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
+
+    function calcAllVitaminsAveragePercentage(){
+        for(let i = 0; i < donuts.length; i++){
+            
+        }
+    }
 
 
 
@@ -151,8 +166,6 @@ import {data} from './donut.js'
 
     // SPELL 2
     
-    
-
 
     // CONSOLE LOGS
     console.log('-----------------------------SPELL 1-----------------------------\n');
@@ -166,6 +179,8 @@ import {data} from './donut.js'
 
     console.log(`List all Donuts with its Calories:\n`);
     listDonutsWithCalories();
+    console.log('\n');
+
     console.log('-----------------------------------------------------------------\n');
 
     console.log(`List all Donuts with its Carbohidrates:\n`);
@@ -173,6 +188,8 @@ import {data} from './donut.js'
     console.log('\n');
 
     console.log(`The donut calories average is: ${donutCaloriesAverage()}\n`);
+
+    console.log(`The sum of all saturated fats is ${calculateSumOfAllSaturatedFats()}\n`);
 
 
     console.log('-----------------------------------------------------------------');
