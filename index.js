@@ -127,9 +127,13 @@ import {data} from './donut.js'
 
 	//Mostrar la media de calorías de todos los donuts (+ 50 exp)
     function donutCaloriesAverage(){
+        let sumCalories = 0;
         for(let i = 0; i < donuts.length; i++){
-
+            const donut = donuts[i];
+            sumCalories += donut.nutrition_facts.nutrition.calories;
         }
+
+        return (sumCalories) / donuts.length;
     }
 
 	//Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
@@ -146,6 +150,7 @@ import {data} from './donut.js'
     const donutMostCalories = mostCaloriesDonut();
 
     // SPELL 2
+    
     
 
 
@@ -166,6 +171,8 @@ import {data} from './donut.js'
     console.log(`List all Donuts with its Carbohidrates:\n`);
     listDonutsWithCarbohidrates();
     console.log('\n');
+
+    console.log(`The donut calories average is: ${donutCaloriesAverage()}\n`);
 
 
     console.log('-----------------------------------------------------------------');
