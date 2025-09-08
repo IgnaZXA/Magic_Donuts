@@ -89,7 +89,6 @@ import {data} from './donut.js'
 
 
 	//donut con más calorías (+ 50 exp)
-
     function mostCaloriesDonut(){
         let maxCalories = donuts[0].nutrition_facts.nutrition.calories;
         let mostCaloriesDonut = donuts[0];
@@ -107,19 +106,66 @@ import {data} from './donut.js'
     }
 
 
+    //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
+
+	//Listar todos los donuts y sus calorías (+ 50 exp)
+    function listDonutsWithCalories(){
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            console.log(`Name: {${donut.name}} , \tCalories: ${donut.nutrition_facts.nutrition.calories}\n`);
+        }
+    }
+
+	//Listar todos los donuts y sus carbohidratos (+ 50 exp)
+    function listDonutsWithCarbohidrates(){
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            const donutCarbohidrates = donut.nutrition_facts.nutrition.carbohydrate;
+            console.log(`Name: {${donut.name}} , \nCarbohidrates:\n \tFiber: ${donutCarbohidrates.carbs_detail.type.fibre}\n \tSugars: ${donutCarbohidrates.carbs_detail.type.sugars}\n`);
+        }
+    }
+
+	//Mostrar la media de calorías de todos los donuts (+ 50 exp)
+    function donutCaloriesAverage(){
+        for(let i = 0; i < donuts.length; i++){
+
+        }
+    }
+
+	//Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
+
+	//Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
+
+
+
+    // SPELL 1
     const donutMostSugar = mostSugarDonut();
     const donutMostIron  = mostIronDonut();
     const donutMostProtein = mostProteinDonut();
     const donutLeastFiber = leastFiberDonut();
     const donutMostCalories = mostCaloriesDonut();
 
+    // SPELL 2
+    
 
-    console.log('-----------------------------SPELL 1-----------------------------');
+
+    // CONSOLE LOGS
+    console.log('-----------------------------SPELL 1-----------------------------\n');
     console.log(`The donut with the most sugar is {${donutMostSugar.name}} with ${donutMostSugar.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars}r of sugar.`);
     console.log(`The donut with the most iron is {${donutMostIron.name}} with ${findVitamin(donutMostIron, 'iron').percent} of iron.`);
     console.log(`The donut with the most protein is {${donutMostProtein.name}} with ${donutMostProtein.nutrition_facts.nutrition.protein}r of protein.`);
     console.log(`The donut with the least fiber is {${donutLeastFiber.name}} with ${donutLeastFiber.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre}r of fiber.`);
     console.log(`The donut with the most calories is {${donutMostCalories.name}} with ${donutMostCalories.nutrition_facts.nutrition.calories}.`);
+
+    console.log('-----------------------------SPELL 2-----------------------------\n');
+
+    console.log(`List all Donuts with its Calories:\n`);
+    listDonutsWithCalories();
+    console.log('-----------------------------------------------------------------\n');
+
+    console.log(`List all Donuts with its Carbohidrates:\n`);
+    listDonutsWithCarbohidrates();
+    console.log('\n');
 
 
     console.log('-----------------------------------------------------------------');
