@@ -97,7 +97,6 @@ import {data} from './donut.js'
             const donut = donuts[i];
 
             let donutCalories = donut.nutrition_facts.nutrition.calories;
-            donutCalories =  parseInt(donutCalories.substring(donutCalories.length-1, 0));
 
             if(maxCalories < donutCalories){
                 maxCalories = donutCalories;
