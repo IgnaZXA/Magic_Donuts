@@ -56,6 +56,21 @@ import {data} from './donut.js'
 
 	//donut con más proteína (+ 50 exp)
 
+    function mostProteinDonut(){
+        let maxProtein = -1;
+        let maxProteinDonut = null;
+        for(let i=0; i < donuts.length; i++){
+            const donut = donuts[i];
+            let donutProtein = donut.nutrition_facts.nutrition.protein;
+            donutProtein = parseInt(donutProtein.substring(donutProtein.length-1, 0));
+            if(maxProtein < donutProtein){
+                maxProtein = donutProtein;
+                maxProteinDonut = donut;
+            }
+        }
+        return maxProteinDonut;
+    }
+
 	//donut con menos fibra (+ 50 exp)
 
 	//donut con más calorías (+ 50 exp)
@@ -64,8 +79,12 @@ import {data} from './donut.js'
 
     const donutMostSugar = mostSugarDonut();
     const donutMostIron  = mostIronDonut();
+    const donutMostProtein = mostProteinDonut();
 
     console.log('-----------------------------SPELL 1-----------------------------');
     console.log(`The donut with the most sugar is {${donutMostSugar.name}} with ${donutMostSugar.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars}r of sugar.`);
     console.log(`The donut with the most iron is {${donutMostIron.name}} with ${findVitamin(donutMostIron, 'iron').percent} of iron.`);
+    console.log(`The donut with the most protein is {${donutMostProtein.name}} with ${donutMostProtein.nutrition_facts.nutrition.protein} of protein.`);
+
+    console.log('-----------------------------------------------------------------');
 
