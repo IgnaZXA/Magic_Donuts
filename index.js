@@ -72,19 +72,56 @@ import {data} from './donut.js'
     }
 
 	//donut con menos fibra (+ 50 exp)
+    function leastFiberDonut(){
+        let leastFiber = donuts[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre;
+        let leastFiberDonut = donuts[0];
+        for(let i=0; i < donuts.length; i++){
+            const donut = donuts[i];
+            let fiberDonut = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre;
+            fiberDonut = parseInt(fiberDonut.substring(fiberDonut.length-1, 0));
+            if(leastFiber > fiberDonut){
+                leastFiber = fiberDonut;
+                leastFiberDonut = donut;
+            }
+        }
+        return leastFiberDonut;
+    }
+
 
 	//donut con más calorías (+ 50 exp)
 
+    function mostCaloriesDonut(){
+        let maxCalories = donuts[0].nutrition_facts.nutrition.calories;
+        let mostCaloriesDonut = donuts[0];
+        for(let i=0; i < donuts.length; i++){
+            const donut = donuts[i];
+
+            let donutCalories = donut.nutrition_facts.nutrition.calories;
+            donutCalories =  parseInt(donutCalories.substring(donutCalories.length-1, 0));
+
+            if(maxCalories < donutCalories){
+                maxCalories = donutCalories;
+                mostCaloriesDonut = donut;
+            }
+        }
+        return mostCaloriesDonut;
+    }
 
 
     const donutMostSugar = mostSugarDonut();
     const donutMostIron  = mostIronDonut();
     const donutMostProtein = mostProteinDonut();
+    const donutLeastFiber = leastFiberDonut();
+    const donutMostCalories = mostCaloriesDonut();
+
 
     console.log('-----------------------------SPELL 1-----------------------------');
     console.log(`The donut with the most sugar is {${donutMostSugar.name}} with ${donutMostSugar.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars}r of sugar.`);
     console.log(`The donut with the most iron is {${donutMostIron.name}} with ${findVitamin(donutMostIron, 'iron').percent} of iron.`);
-    console.log(`The donut with the most protein is {${donutMostProtein.name}} with ${donutMostProtein.nutrition_facts.nutrition.protein} of protein.`);
+    console.log(`The donut with the most protein is {${donutMostProtein.name}} with ${donutMostProtein.nutrition_facts.nutrition.protein}r of protein.`);
+    console.log(`The donut with the least fiber is {${donutLeastFiber.name}} with ${donutLeastFiber.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre}r of fiber.`);
+    console.log(`The donut with the most calories is {${donutMostCalories.name}} with ${donutMostCalories.nutrition_facts.nutrition.calories}.`);
+
 
     console.log('-----------------------------------------------------------------');
 
