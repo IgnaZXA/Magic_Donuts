@@ -114,6 +114,7 @@ import {data} from './donut.js'
             const donut = donuts[i];
             console.log(`Name: {${donut.name}} , \tCalories: ${donut.nutrition_facts.nutrition.calories}\n`);
         }
+        console.log();
     }
 
 	//Listar todos los donuts y sus carbohidratos (+ 50 exp)
@@ -123,6 +124,7 @@ import {data} from './donut.js'
             const donutCarbohidrates = donut.nutrition_facts.nutrition.carbohydrate;
             console.log(`Name: {${donut.name}} , \nCarbohidrates:\n \tFiber: ${donutCarbohidrates.carbs_detail.type.fibre}\n \tSugars: ${donutCarbohidrates.carbs_detail.type.sugars}\n`);
         }
+        console.log();
     }
 
 	//Mostrar la media de calorías de todos los donuts (+ 50 exp)
@@ -202,13 +204,33 @@ import {data} from './donut.js'
 
     function showMostBatterVarietyDonut(){
         const mostBatterDonut = mostBatterVarietyDonut();
-        console.log(`The donut with the most variety of batters is {${mostBatterDonut.name}} `);
+        console.log(`The donut with the most variety of batters is {${mostBatterDonut.name}}\n`);
     }
 
 	//Mostrar el donut con más variedad de toppings (+ 50 exp)
+    function mostToppingVarietyDonut(){
+        let maxToppingsCount = donuts[0].topping.length;
+        let mostToppingsDonut = donuts[0];
+
+        for (let i = 1; i < donuts.length; i++) {
+            const donut = donuts[i];
+            if(maxToppingsCount < donut.topping.length){
+                mostToppingsDonut = donut;
+                maxToppingsCount = donut.topping.length;
+            }
+        }
+        return mostToppingsDonut;
+    }
+
+    function showMostToppingsVarietyDonut(){
+        const mostToppingsDonut = mostToppingVarietyDonut();
+        console.log(`The donut with the most variety of toppings is {${mostToppingsDonut.name}}`);
+    }
 
 	//Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
+    function countTotalBatterAndToppings(){
 
+    }
 
 
 
@@ -234,13 +256,13 @@ import {data} from './donut.js'
 
     console.log(`List all Donuts with its Calories:\n`);
     listDonutsWithCalories();
-    console.log('\n');
 
     console.log('-----------------------------------------------------------------\n');
 
     console.log(`List all Donuts with its Carbohidrates:\n`);
     listDonutsWithCarbohidrates();
-    console.log('\n');
+
+    
 
     console.log(`The donut calories average is: ${donutCaloriesAverage()}\n`);
 
@@ -257,6 +279,9 @@ import {data} from './donut.js'
 
     console.log('Show most batter variety donut:');
     showMostBatterVarietyDonut();
+
+    console.log('Show most toppings variety donut:');
+    showMostToppingsVarietyDonut();
 
     console.log('-----------------------------------------------------------------');
 
