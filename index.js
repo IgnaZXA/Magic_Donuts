@@ -295,10 +295,50 @@ import {data} from './donut.js'
 
 	//Ordenar los donuts por precio de menor a mayor (+ 50 exp)
     function orderDonutsByPrice(){
-        
+        const orderedDonuts = [donuts[0]];
+        for(let i = 1; i < donuts.length; i++){
+            const donut = donuts[i];
+            let j = 0;
+            while(j < orderedDonuts.length && donut.ppu > orderedDonuts[j].ppu){
+                j++;
+            }
+
+            for(let k = orderedDonuts.length; k > j; k--){
+                orderedDonuts[k] = orderedDonuts[k-1];
+            }
+
+            orderedDonuts[j] = donut;
+
+        }
+
+        return orderedDonuts;
+    }
+
+    function showDonutsOrderedByPrice(){
+        const donutListPrice = orderDonutsByPrice();
+        console.log(`The list of donuts ordered by price (asc.):\n`);
+
+        for(let i = 0; i < donutListPrice.length; i++){
+            const donut = donutListPrice[i];
+            console.log(`{${donut.name}}'s price is: ${donut.ppu}`);
+        }
     }
 
 	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
+
+
+    //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
+
+    //Los donuts con el colesterol > 12 modificar las grasas trans a 3,2 gr (+ 50 exp)
+
+    //Donuts con azúcar > 50  modificar el amount de los detalles de carbohidratos a 42gr (+ 50 exp)
+
+    //Añadir una vitamina llamada "Nitacina" al donut con el nombre "Magic Fusion" (+ 50 exp)
+
+    //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
+
+    //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
+
 
 
 
@@ -359,6 +399,10 @@ import {data} from './donut.js'
 
     showEachDonutTypeHowManyCanBuy();
 
+    showDonutsOrderedByPrice();
+
 
     console.log('-----------------------------------------------------------------');
+
+
 
