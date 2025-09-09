@@ -224,13 +224,81 @@ import {data} from './donut.js'
 
     function showMostToppingsVarietyDonut(){
         const mostToppingsDonut = mostToppingVarietyDonut();
-        console.log(`The donut with the most variety of toppings is {${mostToppingsDonut.name}}`);
+        console.log(`The donut with the most variety of toppings is {${mostToppingsDonut.name}}\n`);
     }
 
 	//Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
-    function countTotalBatterAndToppings(){
+    function getAllBatters(){
+        const allBatters = [];
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            const donutBatters = donut.batters.batter;
 
+            for(let j = 0; j < donutBatters.length; j++){
+                const batter = donutBatters[j];
+                if(!allBatters.includes(batter.type)){
+                    allBatters.push(batter);
+                }
+            }
+        }
+        return allBatters;
     }
+
+    function getAllToppings(){
+        const allToppings = [];
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            const donutToppings = donut.topping;
+
+            for(let j = 0; j < donutToppings.length; j++){
+                const topping = donutToppings[j];
+                if(!allToppings.includes(topping.type) && topping.type !== 'None'){
+                    allToppings.push(topping);
+                }
+            }
+        }
+        return allToppings;
+    }
+
+    function countTotalBatterAndToppings(){
+        const allBatters  = getAllBatters(); 
+        const allToppings = getAllToppings();
+
+        console.log(`The total number of different batters is: ${allBatters.length}`);
+        console.log(`The total number of different toppings is: ${allToppings.length}`);
+        console.log();
+    }
+
+    //4.- Nuestro grupo sólo dispone de 4 monedas de plata.
+
+
+	//Mostrar cuántos donuts de cada tipo podemos comprar y las monedas sobrantes. (+ 50 exp)
+    function quantityOfDonutsYouCanBuy(silverCoins, donut){
+        let donutCount = 0;  
+        while(silverCoins > donut.ppu) { donutCount++; silverCoins -= donut.ppu; }
+
+        return [donutCount, silverCoins];
+    }
+
+    function showEachDonutTypeHowManyCanBuy(){
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            const [donutQuantity, leftoverCoins] =  quantityOfDonutsYouCanBuy(4.0, donut);
+            
+            console.log(`The donut {${donut.name}} with 4 silver coins you can buy ${donutQuantity} and the leftover are {${leftoverCoins.toFixed(2)}}\n`);
+        }
+    }
+
+	//Encontrar el donut más caro que aún podamos comprar con 4 monedas de plata (+ 50 exp)
+
+	//Encontrar el donut más barato de la posada (+ 50 exp)
+
+	//Ordenar los donuts por precio de menor a mayor (+ 50 exp)
+    function orderDonutsByPrice(){
+        
+    }
+
+	//Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 
 
@@ -282,6 +350,15 @@ import {data} from './donut.js'
 
     console.log('Show most toppings variety donut:');
     showMostToppingsVarietyDonut();
+
+
+    console.log('Count the total number of different doughs and toppings that exist in the entire inn.');
+    countTotalBatterAndToppings();
+
+    console.log('-----------------------------SPELL 4-----------------------------\n');
+
+    showEachDonutTypeHowManyCanBuy();
+
 
     console.log('-----------------------------------------------------------------');
 
