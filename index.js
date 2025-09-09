@@ -186,6 +186,24 @@ import {data} from './donut.js'
     }
 
 	//Mostrar el donut con más variedad de masas (batters) (+ 50 exp)
+    function mostBatterVarietyDonut(){
+        let maxBatterCount = donuts[0].batters.batter.length;
+        let mostBatterDonut = donuts[0];
+
+        for (let i = 1; i < donuts.length; i++) {
+            const donut = donuts[i];
+            if(maxBatterCount < donut.batters.batter.length){
+                mostBatterDonut = donut;
+                maxBatterCount = donut.batters.batter.length;
+            }
+        }
+        return mostBatterDonut;
+    }
+
+    function showMostBatterVarietyDonut(){
+        const mostBatterDonut = mostBatterVarietyDonut();
+        console.log(`The donut with the most variety of batters is {${mostBatterDonut.name}} `);
+    }
 
 	//Mostrar el donut con más variedad de toppings (+ 50 exp)
 
@@ -236,6 +254,9 @@ import {data} from './donut.js'
     
     console.log('List all donuts with their toppings:\n');
     listAllDonutsToppings();
+
+    console.log('Show most batter variety donut:');
+    showMostBatterVarietyDonut();
 
     console.log('-----------------------------------------------------------------');
 
