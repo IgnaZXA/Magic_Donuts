@@ -175,7 +175,13 @@ import {data} from './donut.js'
     function listAllDonutsToppings(){
         for(let i = 0; i < donuts.length; i++){
             const donut = donuts[i];
-            
+            const donutToppings = donut.topping;
+            console.log(`Donut {${donut.name}} can have this toppings:`);
+            for(let j=1; j < donutToppings.length; j++){ // El primer valor en toppings siempre es None.
+                console.log(`\t${donutToppings[j].type}`);
+            }
+            console.log('\n');
+
         }
     }
 
@@ -225,10 +231,10 @@ import {data} from './donut.js'
 
     console.log('-----------------------------SPELL 3-----------------------------\n');
 
-    console.log(`List all posible batters for donuts: \n`);
+    console.log(`List all donuts with all their posible batters: \n`);
     listDonutBatters();
     
-    console.log('List all donuts toppings:\n');
+    console.log('List all donuts with their toppings:\n');
     listAllDonutsToppings();
 
     console.log('-----------------------------------------------------------------');
