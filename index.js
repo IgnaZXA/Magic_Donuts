@@ -150,10 +150,41 @@ import {data} from './donut.js'
 	//Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
 
     function calcAllVitaminsAveragePercentage(){
+
         for(let i = 0; i < donuts.length; i++){
             
         }
     }
+
+    //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
+
+	//Listar cada donut con sus posibles masas, batter (+ 50 exp)
+    function listDonutBatters(){
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            console.log(`Donut: {${donut.name}} has this posible batters:\n`);
+            const donutBatters = donut.batters.batter;
+            for(let j = 0; j < donutBatters.length; j++){
+                console.log(`\t${donutBatters[j].type}\n`);
+            }
+        }
+        console.log(`\n`);
+    }
+
+	//Listar cada donut con sus posibles extras topping (+ 50 exp)
+    function listAllDonutsToppings(){
+        for(let i = 0; i < donuts.length; i++){
+            const donut = donuts[i];
+            
+        }
+    }
+
+	//Mostrar el donut con más variedad de masas (batters) (+ 50 exp)
+
+	//Mostrar el donut con más variedad de toppings (+ 50 exp)
+
+	//Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
+
 
 
 
@@ -191,6 +222,14 @@ import {data} from './donut.js'
 
     console.log(`The sum of all saturated fats is ${calculateSumOfAllSaturatedFats()}\n`);
 
+
+    console.log('-----------------------------SPELL 3-----------------------------\n');
+
+    console.log(`List all posible batters for donuts: \n`);
+    listDonutBatters();
+    
+    console.log('List all donuts toppings:\n');
+    listAllDonutsToppings();
 
     console.log('-----------------------------------------------------------------');
 
